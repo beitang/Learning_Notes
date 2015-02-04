@@ -511,3 +511,60 @@
 - Make sure that everything is under source code control - documentation, phone number lists, memos to vendors, makefiles, build and release procedures, that little shell script that burns the CD master - everything.
 - Source code control and builds: You can have product builds that are automatic and repeatable.
 - Don't forget that an SCCS is equally applicable to the things you do outside of work.
+
+---
+
+# Chapter 3: The Basic Tools
+## Debugging
+- Software defects manifest themselves in a variety of ways, from misunderstood requirements to coding errors.
+- Psychology of Debugging
+-- Embrace the fact that debugging is just problem solving, and attack it as such.
+- Tip 24: Fix the Problem. Not the Blame.
+-- It doesn't really matter whether the bug is your fault or someone else's. It is still your problem.
+- A Debugging Mindset
+-- You need to turn off many of the defenses you use each day to protect your ego, tune out any project pressures you may be under, and get yourself comfortable.
+- Tip 25: Don't Panic
+-- It is easy to get into a panic, especially if you are facing a deadline, or have a nervous boss or client breathing down your neck while you are trying to find the cause of the bug. But it is very important to step back a pace, and actually think about what could be causing the symptoms that you believe indicate a bug.
+-- If your first reaction on witnessing a bug or seeing a bug report is "that's impossible." you are plainly wrong. Don't waste a single neuron on the train of thought that begins "but that can't happen" because quite clearly it can, and has.
+-- Beware of myopia when debugging. Resist the urge to fix just the symptoms you see: it is more likely that the actual fault may be several steps removed from what you are observing, and may involve a number of other related things. Always try to discover the root cause of a problem, not just this particular appearance of it.
+- Wheret to Start
+-- Before you start to look at the bug, make sure that you are working on code that compiled cleanly -- without warnings.
+-- You may need to interview the user who reported the bug in order to gather more data than you were initially given.
+-- Artificial tests don't exercise enought of application. You must brutally test both boundary conditions and realistic end-user usage patterns. You need to do this systematically.
+- Debugging Strategies
+-- Once you think you know what is going on, it's time to find out what the program thinks is going on.
+-- Bug Reproduction
+--- The best way to start fixing a bug is to make it reproducible. After all, if you can't reproduce it, how will you know if it is ever fixed?
+--- But we want more than a bug that can be reproduced by following some long series of steps: we want a bug that can be reproduced with a single command. It's a lot harder to fix a bug if you have to go through 15 steps to get to the point where the bug shows up. Sometimes by forcing yourself to isolate the circumstances that display the bug, you'll even gain an insight on how to fix it.
+-- Visualize Your Data
+--- Often, the easiest way to discern what a program is doing - or what it is going to do - is to get a good look at the data it is operating on.
+--- Even if your debugger has limited support for visualizing data, you can still do it yourself - either by hand, with paper and pencil, or with external plotting programs.
+--- The DDD debugger has some visualization capabilities, and is freely available.
+-- Tracing
+--- Debuggers generally focus on the state of the program now. Sometimes you need more - you need to watch the state of a program or a data structure over time. Seeing a stack trace can only tell you how you got here directly. It can't tell you what you were doing prior to this call chain, especially in event-based systems.
+--- Tracing statements are those little diagnostic messages you print to the screen or to a file that say things such as "got here" and "value of x = 2." It's a primitive technique compared with IDE-style debuggers, but it is peculiarly effective at diagnosing several classes of errors that debuggers can't. Tracing is invaluable in any system where time itself is a factor: concurrent processes, real-time systems, and event-based applications.
+--- Trace messages should be in a regular, consistent format: you may want to parse them automatically.
+--- Corrupt variables? Check their neighborhood.
+-- Rubber Ducking
+--- A very simple but particularly useful technique for finding the cause of a problem is simply to explain it to someone else.
+--- It sounds simple, but in explaining the problem to another person you must explicitly state things that you may take for granted when going through the code yourself. By having to verbalize some of these assumptions, you may suddenly gain new insight into the problem.
+-- Process of Elimination
+--- It is possible that a bug exists in the OS, the compiler, or a third-party product - but this should not be your first thought. It is much more likely that the bug exists in the application code under development. It is generally more profitable to assume that the application code is incorrectly calling into a library than to assume that the library itself is broken. Even if the problem does lie with a third party, you'll still have to eliminate your code before submitting the bug report.
+- Tip 26: "select" Isn't Broken
+-- We now use the phrase "select is broken" as a gentle reminder whenever one of us starts blaming the system for a fault that is likely to be our own.
+-- If you "changed only one thing" and the system stopped working, that one thing was likely to be responsible, directly or indirectly, no matter how farfetched it seems.
+-- If, however, you have no obvious place to start looking, you can always rely on a good old-fashioned binary search. See if the symptons are present at either of two far away spots in the code. Then look in the middle. If the problem is present, then the bug lies between the start and the middle point; otherwise, it is between the middle point and the end. You can continue in this fashion until you narrow down the spot sufficiently to identify the problem.
+- The Element of Surprise
+-- The amount of surprise you feel when something goes wrong is directly proportional to the amount of trust and faith you have in the code being run. That's why, when faced with a "surprising" failure, you must realize that one or more of your assumptions is wrong. Don't gloss over a routine or piece of code involved in the bug because you "know" it works. Prove it. Prove it in this context, with this data, with these boundary conditions.
+- Tip 27: Don't Assume It - Prove It.
+-- When you come across a surprise bug, beyong merely fixing it, you need to determine why this failure wasn't caught earlier. Consider whether you need to amend the unit or other tests so that they would have caught it.
+-- Also, if the bug is the result of bad data that was propagated through a couple of levels before causing the explosion, see if better parameter checking in thos routines would have isolated it earlier.
+-- Whil you're at it, are there any other places in the code that may be susceptible to this same bug? Now is the time to find and fix them. Make sure that whatever happened, you'll knnow if it happens again.
+-- If it took a long time to fix this bug, ask yourself why. Is there anythong you can do to make fixing this bug easier the next time around? Perhaps you could build in better testing hooks, or write a log file analyzer.
+-- Finally, if the bug is the result of someone's wrong assumption, discuss the problem with the whole team: if one person misunderstands, then it's possible many people do.
+- Debugging Checklist
+-- Is the problem being reported a direct result of the underlying bug, or merely a symptom?
+-- Is the bug really in the compiler? Is it in the OS? Or is it in your code?
+-- If you explained this problem in detail to a coworker, what would you say?
+-- If the suspect code passes its unit tests, are the tests complete enough? What happens if you run the unit test with this data?
+-- Do the conditions that caused this bug exist anywhere else in the system?
