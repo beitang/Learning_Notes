@@ -602,3 +602,34 @@
 -- Normally the most complex part is the parser, which analyzes the input file. Keep the input format simple, and the code generator becomes simple.
 - Code Generators Needn't Generate Code
 
+---
+
+# Chapter 4: Pragmatic Paranoia
+- Tip 30: You Can't Write Perfect Software
+- Accept it as an axiom of life. Embrace it. Celebrate it. Because perfect software doesn't exist.
+- Pragmatic Programmers dont't trust themselves. Knowing that no one writes perfect code, including themselves, Pragmatic Programmers code in defenses against their own mistakes.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## Design by Contract
+- One of the best solutions for ensuring plain dealing is the contract.
+- A contract defines your rights and responsibilities, as well as those of the other party.
+- DBC
+-- Design by Contract is a simple yet powerful technique that focuses on documenting (and agreeing to) the rights and responsibilities of softwre modules to ensure program correctness. What is a correct program? One that does no more and no less than it claims to do. Documenting and verifying that claim is the heart of Design by Contract.
+-- Every function and method in a software system does something. Before it starts that something, the routine may have some expectation of the state of the world, and it may be able to make a statement about the state of the world when it concludes. Meryer describes these expectations and claims as follows:
+-- Preconditions. What must be true in order for the routine to be called; the routines's requirements. A routine should never get called when its preconditions would be violated. It is the caller's responsibility to pass good data.
+-- Postconditions. What the routine is guranteed to do, the state of the world when the routine is done. The fact that the routine has a postcondition implies that it will conclude: infinite lopps aren't allowd.
+-- Class invariants. ?
+-- The contract between a routine and any potential caller can thus be read as: If all the routine's preconditions are met by the caller, the routine shall guarantee that all postconditions and invariants will be true when it completes.
+- Tip 31: Design with Contracts
+- Liskov Substitution Principle: Subclasses must be usable through the base class interface without the need for the user to know the difference.
+- Implementing DBC
+-- The greatest benefit of using DBC may be that it forces the issue of requirements and guarantees to the forefront. Simply enumerating at design time what the input domain range is, what the boundary conditions are, and what the routine promises to deliver - or, more importantly, what it doesn't promise to deliver - is a huge leap forward in writing better software.
+-- Assertions
+-- Language Support
+- DBC and Crashing Early
+- Other Uses of Invariants
+-- Loop Invariants?
+-- Semantic Invariants
+- Dynamic Contracts and Agents
