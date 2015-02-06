@@ -568,3 +568,37 @@
 -- If you explained this problem in detail to a coworker, what would you say?
 -- If the suspect code passes its unit tests, are the tests complete enough? What happens if you run the unit test with this data?
 -- Do the conditions that caused this bug exist anywhere else in the system?
+
+# The Basic Tools
+## Text Manipulation
+- awk, sed, Python, tcl, Perl
+- These languages are important enabling technologies. Using them, you can quickly hack up utilities and prototype ideas - jobs that might take five or ten times as long using conventional languages. And that multiplying factor is crucially important to the kind of experimenting that we do.
+- Tip 28: Learn a Text Manipulation Language
+- Wide-ranging applicability of text manipulation languages
+-- Database schema maintenance
+-- Java property access
+-- Test data generation
+-- Book writing
+-- C to Object Pascal interface
+-- Generating Web documentation
+
+---
+
+# Chapter 3: The Basic Tools
+## Code Generators
+- Tip 29: Write Code That Writes Code
+- Passive code generators are run once to produce a result
+-- Passive code generators save typing. They are basically parameterized templates, generating a given output from a set of inputs. Once the result is produced, it becomes a full-fledged source file in the project; it will be edited, compiled, and placed under source control just like any other file. Its origins will be forgotten.
+-- Uses
+--- Creating new source files. A passive code generator can produce templates, source code control directives, copyright notices, and standard comment blocks for each new file in a project. We have our editors set up to do this whenever we create a new file.
+--- Performing one-off conversions among programming languages.
+--- Producing lookup tables and other resources that are expensive to compute at runtime.
+- Active code generators are used each time their results are required
+-- While passive code generators are simply a convenience, their active cousins are a necessity if you want to follow the DRY principle. With an active code generator, you can take a single representation of some piece of knowledge and convert it into all the forms your application needs. This is not duplication, because the derived froms are disposable, and are generated as needed by the code generator.
+-- Whenever you find yourself trying to get two disparate environments to work together, you should consider using active code generators.
+-- An alternative is to use an active code generator - take the schema and use it to generate the source code for the structures. Now, whenever the schema changes, the code used to access it also changes, automatically. Of course, this schema works only if you make the code generation part of the build process itself.
+-- Another example of melding environments using code generators happens when different programming languages are used in the same application. In order to communicate, each code base will need some information in common - data structures, message formats, and field names, for example. Rather than duplicate this information, use a code generator.
+- Code Generators Needn't Be Complex
+-- Normally the most complex part is the parser, which analyzes the input file. Keep the input format simple, and the code generator becomes simple.
+- Code Generators Needn't Generate Code
+
