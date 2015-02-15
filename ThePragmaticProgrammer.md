@@ -633,3 +633,50 @@
 -- Loop Invariants?
 -- Semantic Invariants
 - Dynamic Contracts and Agents
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## Dead Programs Tell No Lies
+- Tip 32: Crash Early
+- Crash, Don't Trash
+- When your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it as soon as possible. A dead program normally does a log less damage than a crippled one.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## Assertive Programming
+- Tip 33: If It Can't Happen, Use Assertions to Ensure That It Won't
+- Assertions may be turned off at compile time -- never put code that must be executed into an assert.
+- Don't use assertions in place of real error handling. Assertions check for things that should never happen.
+- Leave Assertions Turned On
+- Turning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice. There's dramatic value, but it's hard to get life insurance.
+- Even if you do have performance issues, turn off only those assertions that really hit you.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## When to Use Exceptions
+- What Is Exceptional?
+-- One of the problems with exceptions is knowing when to use them. We believe that exceptions should rarely be used as part of a program's normal flow; exceptions should be reserved for unexpected events. Assume that an uncaught exception will terminate your program and ask yourself, "Will this code still run if I remove all the exception handlers?" If the answer is "no," then maybe exceptions are being used in nonexceptional circumstances.
+- Tip 34: Use Exceptions for Exceptional Problems
+-- Why do we suggest this approach to exceptions? Well, an exception represents an immediate, nonlocal transfer of control - it's a kind of cascading goto. Programs that use exceptions as part of their normal processing suffer from all the readability and maintainability problems of classic spaghetti code. These programs break encapsulation: routines and their callers are more tightly coupled via exception handling.
+- Error Handlers Are an Alternative
+-- An error handler is a routine that is called when an error is detected. You can register a routine to handle a specific category of errors. When one of these errors occurs, the handler will be called.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## How to Balance Resources
+- Tip 35: Finish What You Start
+-- This tip is easy to apply in most circumstances. It simply means that the routine or object that allocates a resource should be responsible for deallocating it.
+- Nest Allocations
+-- Deallocate resources in the opposite order to that in which you allocate them. That way you won't orphan resources if one resource contains references to another.
+-- When allocating the same set of resources in different places in your code, always allocate them in the same order. This will reduce the possibility of deadlock.
+- It doesn't matter what kind of resources we're using - transactions, memory, files, threads, windows - the basic pattern applies: whoever allocates a resource should be responsible for deallocating it.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## Objects and Exceptions
+- The equilibrium between allocations and deallocations is reminiscent of a class's constructor and destructor. The class represents a resource, the constructor gives you a particular object of that resource type, and the destructor removes if from your scope.
