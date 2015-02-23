@@ -43,3 +43,83 @@
 - $ git <verb> --help
 - $ man git-<verb>
 
+---
+
+# Chapter 2.1 Git Basics - Getting a Git Repository
+- Initializing a Repository in an Existing Directory: $ git init
+-- This creates a new subdirectory named .git that contains all of your necessary repository files - a Git repository skeleton.
+- Cloning an Existing Repository: $ git clone [url]
+
+---
+
+# Chapter 2.2 Git Basics - Recording Changes to the Repository
+- Remember that each file in your working directory can be in one of two states: tracked or untracked. Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged. Untracked files are everything else - any files in your working directory that were not in your last snapshot and are not in your staging area.
+- Checking the Status of Your Files: $ git status
+- Tracking New Fiels: $ git add [file name]
+- Staging Modifiled Files: $ git add [file name]
+- Short Status: $ git status -s
+- Ignoring Files: .gitignore
+- Viewing Your Staged and Unstaged Changes
+-- To see what you've changed but not yet staged: $ git diff
+-- To see what you've staged that will go into your next commit: $ git diff --staged or $ git diff --cached
+- Committing Your Changes: $ git commit or $ git commit -m "log"
+- Skipping the Staging Area: $ git commit -a -m "log"
+- Removing Files
+-- $ git rm [file name]
+-- Keep the file on your hard drive but not have Git track it anymore: $ git rm --cached [file name]
+- Moving Files: $ git mv file_from file_to
+
+---
+
+# Chapter 2.3 Git Basics - Viewing the Commit History
+- $ git log
+- One of the more helpful options is -p, which shows the difference introduced in each commit. You can also use -2, which limits the output to only the last two entries: $ git log -p -2
+- To see some abbreviated stats for each commit: $ git log --stat
+- The option --pretty changes the log output to formats other than the default:
+-- $ git log --pretty=oneline
+-- $ git log --pretty=format:"%h - %an, %ar : %s"
+- The option --graph adds a nice little ASCII graph showing your branch and merge history: $ git log --pretty=format:"%h %s" --graph
+- Limiting Log Output
+-- $ git log --since=2.weeks
+-- Another really helpful filter is the -S option which takes a string and only shows the commits that introduced a change to the code that added or removed that string. For instance, if you wanted to find the last commit that added or removed a reference to a specific function, you could call: $ git log -Sfunction_name
+- $ git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges
+
+---
+
+# Chapter 2.4 Git Basics - Undoing Things
+- One of the common undos takes place when you commit too early and possibly forget to add some files, or you mess up your commit message. If you want to try that commit again: $ git commit --amend
+- Unstaging a Staging File: $ git reset HEAD [file name]
+- Unmodifying a Modified File: $ git checkout -- [file name]
+
+---
+
+# Chapter 2.5 Git Basics - Working with Remotes
+- Showing Your Remotes
+-- $ git remote
+-- $ git remote -v
+- Adding Remote Repositories
+-- $ git remote add [shortname] [url]
+- Fetching and Pulling from Your Remotes
+-- $ git fetch [remote-name]
+-- $ git pull: generally fetches data from the server you originally cloned from and automatically tries to merge it into the code you're currently working on.
+- Pushing to Your Remotes
+-- $ git push origin master
+- Inspecting a Remote
+-- $ git remote show origin
+- Removing and Renaming Remotes
+-- $ git remote rename pb paul
+-- $ git remote rm paul
+
+---
+
+# Chapter 2.6 Git Basics - Tagging
+
+---
+
+# Chapter 2.7 Git Basics - Git Aliases
+- $ git config --global alias.co checkout -- then can use $ git co
+- $ git config --global alias.unstage 'reset HEAD --'
+- $ git config --global alias.last 'log -1 HEAD'
+- $ git config --global alias.visual "!gitk"
+
+
