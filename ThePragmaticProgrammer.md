@@ -680,3 +680,25 @@
 # Chapter 4: Pragmatic Paranoia
 ## Objects and Exceptions
 - The equilibrium between allocations and deallocations is reminiscent of a class's constructor and destructor. The class represents a resource, the constructor gives you a particular object of that resource type, and the destructor removes if from your scope.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## Balancing and Exceptions
+- To learn later about C++ and Java.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## When You Can't Balance Resources
+- To learn later.
+
+---
+
+# Chapter 4: Pragmatic Paranoia
+## Checking the Balance
+- Because Pragmatic Programmers trust no one, including ourselves, we feel that it is always a good idea to build code that actually checks that resources are indeed freed appropriately.
+- To learn how to do it later.
+
+---
+
