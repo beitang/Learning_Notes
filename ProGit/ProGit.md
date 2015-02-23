@@ -26,3 +26,20 @@
 ---
 
 # Chapter 1.6 Getting Started - First-Time Git Setup
+－ git config files
+-- /etc/gitconfig: Contains values for every user on the system and all their repositories. If you pass the option --system to git config, it reads and writes from this file specifically.
+-- ~/.gitconfig or ~/.config/git/config: Specific to your user. You can make Git read and write to this file specifically by passing the --global option.
+-- config file in the Git directory (that is, .git/config) of whatever repository you're currently using: Specific to that single repository.
+- $ git config --global user.name "beitang"
+- $ git config --global user.email beitang@example.com
+- $ git config --global core.editor vim
+- $ git config --list
+- $ git config user.name
+
+---
+
+# Chapter 1.7 Getting Started - Getting Help
+- $ git help <verb>
+- $ git <verb> --help
+- $ man git-<verb>
+
