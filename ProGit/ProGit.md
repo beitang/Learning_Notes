@@ -122,4 +122,69 @@
 - $ git config --global alias.last 'log -1 HEAD'
 - $ git config --global alias.visual "!gitk"
 
+---
+
+# Chapter 3.1 Git Branching - Branches in a Nutshell
+- When you make a commit, Git stores a commit object that contains a pointer to the snapshot of the content you staged. This object also contains the author's name and email, the message that you typed, and pointers to the commit or commits that directly came before this commit (its parent or parents): zero parents for the initial commit, one parent for a normal commit, and multiple parents for a commit that results from a merge of two or more branches.
+- A branch in Git is simply a lightweight movable pointer to one of these commits. The default branch name in Git is master. As you starting making commits, you're given a master branch that points to the last commit you made. Every time you commit, it moves forward automatically.
+- Creating a New Branch: $ git branch testing
+-- Creating a new branch creates a new pointer for you to move around.
+-- How does Git know what branch you're currently on? It keeps a special pointer called HEAD. This is a pointer to the local branch you're currently on.
+-- A simple git log command with option --decorate that shows you where the branch pointers are pointing: $ git log --oneline --decorate
+- Switching Branches: $ git checkout testing
+- $ git log --oneline --decorate --graph --all
+- Good picture to understand HEAD and branch: http://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+
+---
+
+# Chapter 7.1 Git Tools - Revision Selection
+- Git allows you to specify specific commits or a range of commits in several ways.
+- Single Revisions
+-- Short SHA-1: Git can figure out a short, unique abbreviation for your SHA-1 values.
+--- $ git show 1c002d
+--- $ git log --abbrev-commit --pretty=oneline
+-- Branch References: The most straightforward way to specify a commit requires that it has a branch reference pointed at it. You can use a branch name in any Git command that expects a commit object for SHA-1 value.
+--- $ git show branch_name
+--- If you want to see which specific SHA-1 a branch points to: $ git rev-parse branch_name
+-- RefLog Shortnames: A log of where your HEAD and branch references have been for the last few months.
+--- $ git reflog
+--- $ git show HEAD@{5}
+--- $ git show master@{yesterday}
+--- $ git log -g master
+--- It's important to note that the reflog information is strictly local - it's a log of what you've done in your repository.
+-- Ancestry References
+--- If you place a ^ at the end of a reference, Git resolves it to mean the parent of that commit: $ git show HEAD^
+--- $ git show d921970^2: means "the second parent of d921970", this syntax is only useful for merge commits, which have more than one parent.
+--- HEAD~ is equal to HEAD^, but HEAD~2 means the first parent of the first parent
+--- "$ git show HEAD~3" equal to "$ git show HEAD^^^"
+- Commit Ranges
+-- Double Dot: this basically asks Git to resolve a range of commits that are reachable from one commit but aren't reachable from another.
+--- $ git log master..experiment
+--- $ git log experiment..master
+--- $ git log origin/master..HEAD: see what you're about to push to a remote
+-- Multiple Points
+-- Triple Dot
+
+---
+
+# Chapter 7.3 Git Tools - Stashing and Cleaning
+- Cleaning your Working Directory
+-- To remove all the untracked files in your working directory: $ git clean -f -d
+-- If you ever want to see what it would do, you can run the command with -n: $ git clean -d -n
+-- If you want to remove ignored files, you can add -x: $ git clean -n -d -x
+-- Interactive mode: $ git clean -x -i
+
+---
+
+# Chapter 7.6 Git Tools - Rewriting History
+- Changing the Last Commit: $ git commit --amend
+- Changing Multiple Commit Messages: $ git rebase -i HEAD~3
+- The Nuclear Option: filter-branch, if you need to rewrite a larger number of commits in some scriptable way.
+
+---
+
+# Chapter 7.7 Git Tools - Reset Demystified
+- Good to know reset
+
+
 
