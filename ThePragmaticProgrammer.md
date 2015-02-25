@@ -702,3 +702,25 @@
 
 ---
 
+# Chapter 5: Bend or Break
+- Life doesn't stand still. Neither can the code that we write. In order to keep up with today's near-frantic pace of change, we need to make every effort to write code that's as loose - as flexible - as possible. Otherwise we may find our code quickly becoming outdated, or too brittle to fix, and may ultimately be left behind in the mad dash toward the future.
+
+---
+
+# Chapter 5: Bend or Break
+## Decoupling and the Law of Demeter
+- "Shy" works two ways: don't reveal yourself to others, and don't interact with too many people.
+- Organize your code into cells (modules) and limit the interaction between them. If one module then gets compromised and has to be replaced, the other modules should be able to carry on.
+- Minimize Coupling
+-- You do need to be careful about how many other modules you interact with and, more importantly, how you came to interact with them.
+-- When we ask an object for a particular service, we'd like the service to be performed on our behalf. We do not want the object to give us a third-party object that we have to deal with to get the required service.
+-- Traversing relationships between objects directly can quickly lead to a combinatorial explosion of dependency relationships.
+-- Systems with many unnecessary dependencies are very hard (and expensive) to maintain, and tend to be highly unstable.
+- The Law of Demeter for Functions
+-- The Law of Demeter for functions states that any method of an object should call only methods belonging to: itself, any parameters that were passed in to the method, any objects it created, any directly held component objects.
+- Tip 36: Minimize Coupling Between Modules
+- Does It Really Make a Difference?
+-- Using The Law of Demeter will make your code more adaptable and robust, but at a cost: as a "general contractor," your module must delegate and manage any and all subcontractors directly, without involving clients of your module. In practice, this means that you will be writing a large number of wrapper methods that simply forward the request on to a delegate. These wrapper methods will impose both a runtime cost and a space overhead, which may be significant - even prohibitive - in some applications.
+-- As with any techique, you must balance the pros and cons for your particular application.
+- Physical Decoupling: <Large-scale C++ software Design>
+
