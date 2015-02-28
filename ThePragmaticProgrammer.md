@@ -724,3 +724,67 @@
 -- As with any techique, you must balance the pros and cons for your particular application.
 - Physical Decoupling: <Large-scale C++ software Design>
 
+---
+
+# Chapter 5: Bend or Break
+## Metaprogramming
+- Details mess up our pristine code - especially if they change frequently. Every time we have to go in and change the code to accommodate some change in business logic, or in the law, or in management's personal tastes of the day, we run the risk of breaking the system - of introducing a new bug.
+- So we say "out with the details!" Get them out of the code. While we're at it, we can make our code highly configurable and "soft" - that is, easily adaptable to changes.
+- Dynamic Configuration
+-- First, we want to make our systems highly configurable. Not just things such as screen colors and prompt text, but deeply ingrained items such as the choice of algorithms, database products, middleware technology, and user-interface style. These items should be implemented as configuration options, not through integration or engineering.
+- Tip 37: Configure, Don't Integrate
+-- Use metadata to describe configuration options for an application: tuning parameters, user preferences, the installation directory, and so on.
+-- What exactly is metadata? Strictly speaking, metadata is data about data. The most common example is probably a database schema or data dictionary. A schema contains data that describes fields in terms of names, storage lengths, and other attributes. You should be able to access and manipulate this information just as you would any other data in the database.
+-- We use the term in its broadest sense. Metadata is any data that describes the application - how it should run, what resources it should use, and so on. Typically, metadata is accessed and used at runtime, not at compile time. You use metadata all the time - at least your programs do. Suppose you click on an option to hide the toolbar on your Web brower. The browser will store that preference, as metadata, in some sort of internal database.
+-- This database might be in a proprietary format, or it might use a standard mechanism.
+- Metadat-Driven Applications
+-- But we want to go beyond using metadata for simple preferences. We want to configure and drive the application via metadata as much as possible. Our goal is to think declaratively (specifying what is to be done, not how) and create highly dynamic and adaptable programs. We do this by adopting a general rule: program for the general case, and put the specifics somewhere else - outside the compiled code base.
+- Tip 38: Put Abstractions in Code Details in Metadata
+-- There are several benefits to this approach:
+-- It forces you to decouple your design, which results in a more flexible and adaptable program.
+-- It forces you to create a more robust, abstract design by deferring details - deferring them all the way out of the program.
+-- You can customize the application without recompiling it. You can also use this level of customization to provide easy work-arounds for critical bugs in live production systems.
+-- Metadata can be expressed in a manner that's much closer to the problem domain than a general-purpose programming language might be.
+-- You may even be able to implement several different projects using the same application engine, but with different metadata.
+-- We want to defer definition of most details until the last moment, and leave the details as soft - as easy to change - as we can. By crafting a solution that allows us to make changes quickly, we stand a better chance of coping with the flodd of directional shifts that swamp many projects.
+- Business Logic
+-- So you've made the choice of database engine a configuration option, and provided metadata to determine the user-interface style. Can we do more? Definitely.
+-- Because business policy and rules are more likely to change than any other aspect of the project, it makes sense to maintain them in a very flexible format.
+- When to Configure
+-- But when should a program read this configuration? Many programs will scan such things only at startup, which is unfortunate. If you need to change the configuration, this forces you to restart the application. A more flexible approach is to write programs that can reload their configuration while they're running, This flexibility comes at a cost: it is more complex to implement.
+- An Example: Enterprise Java Beans
+-- Enterprise Java Beans (EJB) is a framework for simplifying programming in a distributed, transaction-based environment. We mention it here because EJB illustrates how metadata can be used both to configure applications and to reduce the complexity of writing code.
+- Cooperative Configuration?
+- Don't Write Dodo-Code
+-- Without metadata, your code is not as adaptable or flexible as it could be. Is this a bad thing? Well, out here in the real world, species that don't adapt die.
+-- Don't let your project (or your career) go the way of the dodo.
+
+---
+
+# Chapter 5: Bend or Break
+## Temporal Coupling
+- What is temporal coupling all about, you may ask. It's about time.
+- Time is an often ignored aspect of software architectures. The only time that preoccupies us is the time on the schedule, the time left until we ship - but this is not what we're talking about here. Instead, we are talking about the role of time as a design element of the software itself. There are two aspects of time that are important to us: concurrency (things happening at the same time) and ordering (the relative positions of things in time).
+- We don't usually approach programming with either of these aspects in mind. When people first sit down to design an architecture or write a program, things tend to be linear. That's the way most people think - do this and then always do that. But thinking this way leads to temporal coupling: coupling in time. Method A must always be called before method B; only one report can be run at a time; you must wait for the screen to redraw before the button click is received. Tick must happen before tock.
+- This approach is not very flexible, and not very realistic.
+- We need to allow for concurrency and to think about decoupling any time or order dependencies. In doing so, we can gain flexibility and reduce any time-based dependencies in many areas of development: workflow analysis, architecture, design, and deployment.
+- Workflow
+-- UML activity diagram
+-- You can use activity diagrams to maximize parallelism by identifying activities that could be performed in parallel, but aren't.
+- Tip 39: Analyze Workflow to Improve Concurrency
+-- It can be eye-opening to see where the dependencies really exist.
+- Architecture
+-- hungry consumer model
+- Tip 40: Design Using Services
+-- Instead of components, we have really created services - independent, concurrent objects behind well-defined, consistent interfaces.
+- Design for Concurrency
+-- Programming with threads imposes some design constraints - and that's a good thing. Those constraints are actually so helpful that we want to abide by them whenever we program. It will help us decouple our code and fight programming by coincidence.
+-- With linear code, it's easy to make assumptions that lead to sloppy programming. But concurrency forces you to think through things a bit more carefully - you're not alone at the party anymore. Because things can now happen at the "same time," you may suddenly see some time-based dependencies.
+-- To begin with, any global or static variables must be protected from concurrent access. Now may be a good time to ask yourself why you need a global variable in the first place. In addition, you need to make sure that you present consistent state information, regardless of the order of calls.
+- Cleaner Interfaces
+-- Thinking about concurrency and time-ordered dependencies can lead you to design cleaner interfaces as well. Consider the C library routine strtok, which breaks a string into tokens.
+- Tip 41: Always Design for Concurrency
+- Deployment
+-- Once you've designed an architecture with an element of concurrency, it becomes easier to think about handling many concurrent services: the model becomes pervasive.
+-- Now you can be flexible as to how the application is deployed: standalone, client-server, or n-tier. By architecting your system as independent services, you can make the configuration dynamic as well. By planning for concurrency, and decoupling operations in time, you have all these options - including the stand-alone option, where you can choose not to be concurrent.
+-- Going the other way (trying to add concurrency to a non-concurrent application) is much harder. If we design to allow for concurrency, we can more easily meet scalability or performance requirements when the time comes - and if the time never comes, we still have the benefit of a cleaner design.
