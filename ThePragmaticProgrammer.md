@@ -816,3 +816,26 @@
 -- View: A way to interpret the model. It subscribes to changes in the model and logical events from the controller.
 -- Controller: A way to control the view and provide the model with new data. It publishes events to both the model and the view.
 -- In advanced systems, it can be handy to have debugging views - specialized views that show you in-depth details of the model. Adding a facility to trace individual events can be a great time saver as well.
+
+---
+
+# Chapter 5: Bend or Break
+## Blackboards
+- Some key features of the blackboard approach are:
+-- None of the detectives needs to know of the existence of any other detective - they watch the board for new information and their findings.
+-- The detectives may be trained in different disciplines, may have different levels of education and expertise, and may not even work in the same precinct. They share a desire to solve the case, but that's all.
+-- Different detectives may come and go during the course of the process, and may work different shifts.
+-- There are no restrictions on what may be placed on the blackboard. It may be pictures, sentences, physical evidence, and so on.
+- We've worked on a number of projects that involved a workflow or distributed data gathering process. Which each, designing a solution around a simple blackboard model gave us a solid metaphor to work with: all of the features listed above using detectives are just as applicable to objects and code modules.
+- A blackboard system lets us decouple our objects from each other completely providing a forum where knowledge consumers and producers can exchange data anonymously and asynchronously. As you might guess, it also cuts down on the amount of code we have to write.
+- Blackboard Implementations
+-- Something miss reading
+- Tip 43: Use Blackboards to Coordinate Workflow
+-- We can use the blackboard to coordinate disparate facts and agents, while still maintaining independence and even isolation among participants.
+
+---
+
+# Chapter 6: While You Are Coding
+- Conventional wisdom says that once a project is in the coding phase, the work is mostly mechanical, transcribing the design into executable statements. We think that this attitude is the single biggest reason that many programs are ugly, inefficient, poorly structured, unmaintainable, and just plain wrong.
+- Coding is not mechanical. There are decisions to be made every minute -- decisions that require careful thought and judgment if the resulting program is to enjoy a long, accurate, and productive life.
+- Most of us can drive a car largely on autopilot - we don't explicitly command our foot to press a pendal, or our arms to turn the wheel - we just think "slow down and turn right." However, good, safe drivers are constantly reviewing the situation, checking for potential problems, and putting themselves into good positions in case the unexpected happens. The same is true of coding -- it may be largely routine, but keeping your wits about you could well prevent a disaster.
