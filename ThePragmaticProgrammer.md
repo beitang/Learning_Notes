@@ -839,3 +839,25 @@
 - Conventional wisdom says that once a project is in the coding phase, the work is mostly mechanical, transcribing the design into executable statements. We think that this attitude is the single biggest reason that many programs are ugly, inefficient, poorly structured, unmaintainable, and just plain wrong.
 - Coding is not mechanical. There are decisions to be made every minute -- decisions that require careful thought and judgment if the resulting program is to enjoy a long, accurate, and productive life.
 - Most of us can drive a car largely on autopilot - we don't explicitly command our foot to press a pendal, or our arms to turn the wheel - we just think "slow down and turn right." However, good, safe drivers are constantly reviewing the situation, checking for potential problems, and putting themselves into good positions in case the unexpected happens. The same is true of coding -- it may be largely routine, but keeping your wits about you could well prevent a disaster.
+
+---
+# Chapter 6: While You Are Coding
+## Programming by Coincidence
+- We should avoid programming by coincidence - relying on luck and accidental successes - in favor of programming deliberately.
+- How to Program by Coincidence
+-- Accidents of Implementation
+--- For code you write that others will call, the basic principles of good modularization and of hiding implementation behind small, well-documented interfaces can all help.
+--- For routines you call, rely only on documented behavior. If you can't, for whatever reason, then document your assumption well.
+-- Accidents of Context
+-- Implicit Assumptions
+--- At all levels, people operate with many assumptions in mind -- but these assumptions are rarely documented and are often in conflict between different developers. Assumptions that aren't based on well-established facts are the bane of all projects.
+- Tip 44: Don't Program by Coincidence
+- How to Program Deliberately
+-- Always be aware of what you are doing.
+-- Don't code blindfolded. Attempting to build an application you don't fully understand, or to use a technology you aren't familiar with, is an invitation to be misled by coincidences.
+-- Proceed from a plan, whether that plan is in your head, on the back of a cocktail napkin, or on a wall-sized printout from a CASE tool.
+-- Rely only on reliable things. Don't depend on accidents or assumptions. If you can't tell the difference in particular circumstances, assume the worst.
+-- Document your assumptions. Design by Contract, can help clarify your assumptions in your own mind, as well as help communicate them to others.
+-- Don't just test your code, but test your assumptions as well. Don't guess; actually try it. Write an assertion to test your assumptions. If your assertion is right, you have improved the documentation in your code. If you discover your assumption is wrong, then count yourself lucky.
+-- Prioritize your effort. Spend time on the important aspects; more than likely, these are the hard parts. If you don't have fundamentals or infrastructure correct, brilliant bells and whistles will be irrelevant.
+-- Don't be a slave to history. Don't let existing code dictate future code. All code can be replaced if it is no longer appropirate. Even within one program, don't let what you've already done constrain what you do next. This decision may impact the project schedule. The assumption is that the impact will be less than the cost of not making the change.
