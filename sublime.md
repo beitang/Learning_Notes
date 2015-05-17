@@ -35,5 +35,25 @@ Notes: The listed commands are used in MAC OS.
 # Packages
 - Package Control: command panel, input install
 - AdvancedNewFile: cmd+alt+n, create new file with specified folder
-- Git: command panel, git add ...
+- Git: command panel, git add ..., git commit (then add comment, then cmd+w), git push
+- SyncedSiderBar: change current file, siderbar will change too
 
+# Jump between files
+- cmd+p: goto anything, input file name
+- cmd+p: filename:linenumber
+- cmd+p: filename@functionmame
+- cmd+p: filename#string
+- cmd+f: search, enter for next, shift+enter for previous
+- cmd+d: select word, repeart cmd+d to select more same word, enter multi-point edit mode
+- Select folder in siderbar, then right click, then select Find in Folder: the result will show in one file, use F4 to jump to one by one, shift+F4 to previous one, or just click on the result file to jump
+- ctrl+"-": jump back
+- ctrl+shift+"-": jump forward
+
+# Code completion
+- Emmet: for html and css
+- snippet
+- Completions files
+- Words in the buffer
+
+# Build system
+- cmd+b
