@@ -1,5 +1,21 @@
-# Bash Notes
-- Mainly get from http://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html
+# Debugging Bash scripts
+## Debugging on the entire script
+- `bash -x script.sh`: run the entire script in debug mode. Traces of each command plus its arguments are printed to standard output after the commands have been expanded but before they are executed.
+- `#!/bin/bash -xv`
+
+## Debugging on part(s) of the script
+- Using the set Bash built-in
+```
+set -x
+date
+set +x
+```
+- Add `echo` to print wanted information
+
+## Overview of set debugging options
+- `set -f`, `set -o noglob`: Disable file name generation using metacharacters (globbing).
+- `set -v`, `set -o verbose`: Prints shell input lines as they are read.
+- `set -x`, `set -o xtrace`: Print command traces before executing command.
 
 ## Three types of built-in commands
 - Bourne Shell built-ins: `:, ., break, cd, continue, eval, exec, exit, export, getopts, bash, pwd, readonly, return, set, shift, test, [, times, trap, umask, unset`
@@ -25,25 +41,6 @@
 
 ## Special variables
 - `export PS1="\u@\h -w> "`
-
-## Debugging Bash scripts
-### Debugging on the entire script
-- `bash -x script.sh`: run the entire script in debug mode. Traces of each command plus its arguments are printed to standard output after the commands have been expanded but before they are exectured.
-- `#!/bin/bash -xv`
-
-### Debugging on part(s) of the script
-- Using the set Bash built-in
-```
-set -x
-date
-set +x
-```
-- Add `echo`
-
-### Overview of set debuggin options
-- `set -f`, `set -o noglob`: Disable file name generation using metacharacters (globbing).
-- `set -v`, `set -o verbose`: Prints shell input lines as they are read.
-- `set -x`, `set -o xtrace`: Print command traces before executing command.
 
 ## The Bash environment
 ## Shell initialization files
@@ -232,3 +229,8 @@ expr ? expr : expr |
 ### Bash help
 - man bash
 - bash info
+
+# References
+- http://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html
+- `man bash`
+- `info bash`
