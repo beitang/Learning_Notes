@@ -841,6 +841,7 @@
 - Most of us can drive a car largely on autopilot - we don't explicitly command our foot to press a pendal, or our arms to turn the wheel - we just think "slow down and turn right." However, good, safe drivers are constantly reviewing the situation, checking for potential problems, and putting themselves into good positions in case the unexpected happens. The same is true of coding -- it may be largely routine, but keeping your wits about you could well prevent a disaster.
 
 ---
+
 # Chapter 6: While You Are Coding
 ## Programming by Coincidence
 - We should avoid programming by coincidence - relying on luck and accidental successes - in favor of programming deliberately.
@@ -861,3 +862,12 @@
 -- Don't just test your code, but test your assumptions as well. Don't guess; actually try it. Write an assertion to test your assumptions. If your assertion is right, you have improved the documentation in your code. If you discover your assumption is wrong, then count yourself lucky.
 -- Prioritize your effort. Spend time on the important aspects; more than likely, these are the hard parts. If you don't have fundamentals or infrastructure correct, brilliant bells and whistles will be irrelevant.
 -- Don't be a slave to history. Don't let existing code dictate future code. All code can be replaced if it is no longer appropirate. Even within one program, don't let what you've already done constrain what you do next. This decision may impact the project schedule. The assumption is that the impact will be less than the cost of not making the change.
+
+---
+
+# Chapter 6: While You Are Coding
+## Algorithm Speed
+- Another kind of estimating that Pragmatic Programmers use almost daily: estimating the resources that algorithms use - time, processor, memory, and so on.
+- This kind of estimating is often crucial. Given a choice between two ways of doing something, which do you pick? You know how long your program runs with 1,000 records, but how will it scale to 1,000,000? What parts of the code need optimizing?
+- It turns out that these questions can often be answered using common sense, some analysis, and a way of writing approximations called the "big O" notation.
+- What Do We Mean by Estimating Algorithms?
