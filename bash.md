@@ -24,14 +24,14 @@ set -x | set -o xtrace | Print command traces before executing command.
 
 ## Shell initialization files
 - System-wide configuration files
->/etc/profile
->/etc/bashrc
+  - >/etc/profile
+  - >/etc/bashrc
 - Individual user configuration files
->~/.bash_profile
->~/.bash_login
->~/.profile
->~/.bashrc
->~/.bash_logout
+  - >~/.bash_profile
+  - >~/.bash_login
+  - >~/.profile
+  - >~/.bashrc
+  - >~/.bash_logout
 
 ## Three types of built-in commands
 - Bourne Shell built-ins: `:, ., break, cd, continue, eval, exec, exit, export, getopts, bash, pwd, readonly, return, set, shift, test, [, times, trap, umask, unset`
