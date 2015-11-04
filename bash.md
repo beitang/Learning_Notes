@@ -1,9 +1,11 @@
-# Debugging Bash scripts
-## Debugging on the entire script
+# Bash learning notes
+
+## Debugging Bash scripts
+### Debugging on the entire script
 - `bash -x script.sh`: run the entire script in debug mode. Traces of each command plus its arguments are printed to standard output after the commands have been expanded but before they are executed.
 - `#!/bin/bash -xv`
 
-## Debugging on part(s) of the script
+### Debugging on part(s) of the script
 - Using the set Bash built-in
 ```
 set -x
@@ -12,10 +14,12 @@ set +x
 ```
 - Add `echo` to print wanted information
 
-## Overview of set debugging options
-- `set -f`, `set -o noglob`: Disable file name generation using metacharacters (globbing).
-- `set -v`, `set -o verbose`: Prints shell input lines as they are read.
-- `set -x`, `set -o xtrace`: Print command traces before executing command.
+### Overview of set debugging options
+Short notation | Long notation | Result
+-------------- | ------------- | ------
+set -f | set -o noglob | Disable file name generation using metacharacters (globbing).
+set -v | set -o verbose | Prints shell input lines as they are read.
+set -x | set -o xtrace | Print command traces before executing command.
 
 ## Three types of built-in commands
 - Bourne Shell built-ins: `:, ., break, cd, continue, eval, exec, exit, export, getopts, bash, pwd, readonly, return, set, shift, test, [, times, trap, umask, unset`
