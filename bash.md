@@ -183,10 +183,11 @@ expr ? expr : expr | conditional evaluation
 ### File name expansion ?
 
 
-## Aliase
+## Aliases
 - `alias`
 - `alias dh='df -h'`
 - `unalias dh`
+
 
 ## More Bash options
 ### Displaying options
