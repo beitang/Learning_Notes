@@ -106,9 +106,21 @@ $_ | The underscore variable is set at the shell startup and contains the absolu
 
 ## Quoting characters
 - Quoting is used to remove the special meaning of characters or words: quotes can disable special treatment for special characters, they can prevent reserved words from being recognized as such and they can disable parameter expansion.
-- Escape characters: used to remove the special meaning from a single character. A non-quoted backslash, \, is used as an escape character in Bash.
-- Single quotes: used to preserve the literal value of each character enclosed within the quotes. A single quote may not occur between single quotes, even when preceded by a backslash.
-- Double quotes: Using double quotes the literal value of all characters enclosed is preserved, except for the dollar sign, the backticks (backward single quotes, ``) and the backslash. The dollar sign and the backticks retain their special meaning within the double quotes. The backslash retains its meaning only when followed by dollar, backticks, double quote, backlash or newline. A double quote may be quoted within double quotes by preceding it with a backslash.
+
+### Escape characters
+- used to remove the special meaning from a single character.
+- A non-quoted backslash, \, is used as an escape character in Bash.
+
+### Single quotes
+- used to preserve the literal value of each character enclosed within the quotes.
+- A single quote may not occur between single quotes, even when preceded by a backslash.
+
+### Double quotes
+- Using double quotes the literal value of all characters enclosed is preserved, except for the dollar sign, the backticks (backward single quotes, ``) and the backslash.
+- The dollar sign and the backticks retain their special meaning within the double quotes.
+- The backslash retains its meaning only when followed by dollar, backticks, double quote, backlash or newline.
+- A double quote may be quoted within double quotes by preceding it with a backslash.
+
 
 ## Shell expansion
 - After the command has been split into tokens, these tokens or words are expanded or resolved. There are eight kinds of expansion performed, which we will discuss in the next section, in the order that they are expanded. After all expansions, quote removal is performed.
