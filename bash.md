@@ -134,7 +134,7 @@ spell spill spall
 ```
 
 ### Tilde expansion
-- If a word begins with an unquoted tilde character (“~”), all of the characters up to the first unquoted slash are considered a tilde-prefix. If none of the characters in the tilde-prefix are quoted, the characters in the tilde-prefix following the tilde are treated as a possible login name. If this login name is the null string, the tilde is replaced with the value of the *HOME* shell variable If HOME is unset, the home directory of the user executing the shell is substituted instead. Otherwise, the tilde-prefix is replaced with the home directory associated with the special login name.
+- If a word begins with an unquoted tilde character (“~”), all of the characters up to the first unquoted slash are considered a tilde-prefix. If none of the characters in the tilde-prefix are quoted, the characters in the tilde-prefix following the tilde are treated as a possible login name. If this login name is the null string, the tilde is replaced with the value of the **HOME** shell variable If HOME is unset, the home directory of the user executing the shell is substituted instead. Otherwise, the tilde-prefix is replaced with the home directory associated with the special login name.
 - If the tilde-prefix is “~+”, the value of the shell variable PWD replaces the tilde-prefix.
 - If the tilde-prefix is “~-“, the value of the shell variable OLDPWD, if it is set, is substituted.
 
@@ -151,38 +151,37 @@ spell spill spall
 - The format for arithmetic expansion is: $(( EXPRESSION ))
 - The expression is treated as if it were within double quotes, but a double quote inside the parentheses is not treated specially. All tokens in the expression undergo parameter expansion, command substitution, and quote removal. Arithmetic substitutions may be nested.
 
-Arithmetic operators in order of decreasing precedence
+#### Arithmetic operators in order of decreasing precedence
 Operator | Meaning
----------- | ----------
+-------- | -------
 VAR++ and VAR-- | variable post-increment and post-decrement
 ++VAR and --VAR | variable pre-increment and pre-decrement
-- and + |
-! and ~ |
-** |
-*, / and % |
-<< and >> |
-<=, >=, < and > |
-== and != |
-& |
-^ |
-| |
-&& |
-|| |
-expr ? expr : expr |
-=, *=, /=, %=, +=, -=, <<=, >>=, &=, ^= and != |
+- and + | unary minus and plus
+! and ~ | logical and bitwise negation
+** | exponentiation
+*, / and % | multiplication, division, remainder
+<< and >> | left and right bitwise shifts
+<=, >=, < and > | comparision operators
+== and != | equality and inequality
+& | bitwise AND
+^ | bitwise exclusive OR
+| | bitwise OR
+&& | logical AND
+|| | logical OR
+expr ? expr : expr | conditional evaluation
+=, *=, /=, %=, +=, -=, <<=, >>=, &=, ^= and != | assignments
 , | separator between expression.
 
 - Shell variables are allowed as operands; parameter expansion is performed before the expression is evaluated.
 - When possible, Bash users should try to use the syntax with square brackets: $[ EXPRESSION ]. However, this will only calculate the result of EXPRESSION, and do not tests.
 
-### Process substitution
+### Process substitution ?
 - Is supported on systems that support named pipes (FIFOs) or the /dev/fd method of naming open files. It takes the form of <(LIST) or (LIST)
 
-### Word splitting
-?
+### Word splitting ?
 
-### File name expansion
-?
+### File name expansion ?
+
 
 ## Aliase
 - `alias`
@@ -195,7 +194,7 @@ expr ? expr : expr |
 ### Changing options
 
 
-# References
+## References
 - http://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html
 - `man bash`
 - `info bash`
