@@ -134,18 +134,17 @@ spell spill spall
 ```
 
 ### Tilde expansion
-- if a word begins with an unquoted tilde character (“~”), all of the characters up to the first unquoted slash are considered a tilde-prefix. If none of the characters in the tilde-prefix are quoted, the characters in the tilde-prefix following the tilde are treated as a possible login name. If this login name is the null string, the tilde is replaced with the value of the HOME shell variable If HOME is unset, the home directory of the user executing the shell is substituted instead. Otherwise, the tilde-prefix is replaced with the home directory associated with the special login name.
+- If a word begins with an unquoted tilde character (“~”), all of the characters up to the first unquoted slash are considered a tilde-prefix. If none of the characters in the tilde-prefix are quoted, the characters in the tilde-prefix following the tilde are treated as a possible login name. If this login name is the null string, the tilde is replaced with the value of the *HOME* shell variable If HOME is unset, the home directory of the user executing the shell is substituted instead. Otherwise, the tilde-prefix is replaced with the home directory associated with the special login name.
 - If the tilde-prefix is “~+”, the value of the shell variable PWD replaces the tilde-prefix.
 - If the tilde-prefix is “~-“, the value of the shell variable OLDPWD, if it is set, is substituted.
 
 ### Shell parameter and variable expansion
 - The “$” character introduces parameter expansion, command substitution, or arithmetic expansion. The parameter name or symbol to be expanded may be enclosed in braces, which are optional but serve to protect the variable to be expanded from characters immediately following it which could be interpreted as part of the name.
-- The following construct allows for creation of the named variable if it does not yet exist: `${VAR:=value}`
-- ??
+- The following construct allows for creation of the named variable if it does not yet exist: `${VAR:=value}`. ?
 
 ### Command substitution
 - allows the output of a command to replace the command itself.
-- occurs when a command is enclosed like this: $command, or `command`
+- occurs when a command is enclosed like this: $command, or \`command\`
 
 ### Arithmetic expansion
 - allows the evaluation of an arithmetic expression and the substitution of the result.
