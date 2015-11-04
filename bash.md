@@ -128,7 +128,7 @@ $_ | The underscore variable is set at the shell startup and contains the absolu
 ### Brach expansion
 - A mechanism by which arbitrary strings may be generated.
 - Brace expansion is performed before any other expansions, and any characters special to other expansions are preserved in the result.
-```
+```bash
 franky -> echo sp{el,il,al}l
 spell spill spall
 ```
