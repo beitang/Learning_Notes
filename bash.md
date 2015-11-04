@@ -21,6 +21,18 @@ set -f | set -o noglob | Disable file name generation using metacharacters (glob
 set -v | set -o verbose | Prints shell input lines as they are read.
 set -x | set -o xtrace | Print command traces before executing command.
 
+
+## Shell initialization files
+- System-wide configuration files
+>/etc/profile
+>/etc/bashrc
+- Individual user configuration files
+>~/.bash_profile
+>~/.bash_login
+>~/.profile
+>~/.bashrc
+>~/.bash_logout
+
 ## Three types of built-in commands
 - Bourne Shell built-ins: `:, ., break, cd, continue, eval, exec, exit, export, getopts, bash, pwd, readonly, return, set, shift, test, [, times, trap, umask, unset`
 - Bash built-in commands: `alias, bind, builtin, command, declare, echo, enable, help, let, local, logout, printf, read, shopt, type, typeset, ulimit, unalias`
@@ -46,17 +58,6 @@ set -x | set -o xtrace | Print command traces before executing command.
 ## Special variables
 - `export PS1="\u@\h -w> "`
 
-## The Bash environment
-## Shell initialization files
-- System-wide configuration files
-/etc/profile
-/etc/bashrc
-- Individual user configuration files
-~/.bash_profile
-~/.bash_login
-~/.profile
-~/.bashrc
-~/.bash_logout
 
 ## Variables
 - Global variables: available in all shells. The `env` or `printing` commands can be used to display environment variables.
