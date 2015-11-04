@@ -33,124 +33,74 @@ set -x | set -o xtrace | Print command traces before executing command.
   - ~/.bashrc
   - ~/.bash_logout
 
-## Three types of built-in commands
-- Bourne Shell built-ins: `:, ., break, cd, continue, eval, exec, exit, export, getopts, bash, pwd, readonly, return, set, shift, test, [, times, trap, umask, unset`
-- Bash built-in commands: `alias, bind, builtin, command, declare, echo, enable, help, let, local, logout, printf, read, shopt, type, typeset, ulimit, unalias`
-- Special built-in commands
-
-## Shell building blocks
-- Shell syntax
-- Shell commands
-- Shell functions
-- Shell parameters
-- Shell expansions
-- Redirections
-- Executing commands
-- Shell scripts
-
-## Overview of programming terms
-- Command control: Testing exit status of a command in order to determine whether a portion of the program should be executed.
-- Conditional branch: Logical point in the program when a condition determines what happens next.
-- Logic flow: The overall design of the program. Determines logical sequence of tasks so that the result is successful and controlled.
-- Loop: Part of the program that is performed zero or more times.
-- User input: Information provided by an external source while the program is running, can be stored and recalled when needed.
-
-## Special variables
-- `export PS1="\u@\h -w> "`
-
 
 ## Variables
+### Types of variables
 - Global variables: available in all shells. The `env` or `printing` commands can be used to display environment variables.
 - Local variables: only available in the current shell. Using the `set` built-in command without any options will display a list of all variables (including environment variables) and functions.
 - Variables by content: string variables, integer variables, constant variables, array variables
-- Creating variables: case sensitive, `VARNMAE=“value”`, putting spaces around the equal sign will cause errors. It is a good habit to quote content strings when assigning values to variables.
-- Exporting variables: pass variables to a subshell, `export VARNAME=“value"`
+
+### Creating variables
+- case sensitive
+- `VARNMAE=“value”`
+- Note: putting spaces around the equal sign will cause errors. It is a good habit to quote content strings when assigning values to variables.
+
+### Exporting variables
+- pass variables to a subshell
+- `export VARNAME="value"`
 
 ### Bourne shell reserved variables
-- CDPATH: A colon-separated list of directories used as a search path for the `cd` built-in command.
-- HOME: The current user’s home directory; the default for the `cd` built-in. The value of this variable is also used by tilde expansion.
-- IFS: A list of characters that separates fields; used when the shell splits words as part of a expansion.
-- MAIL: If this parameter is set to a file name and the MAILPATH variable is not set, Bash informs the user of the arrival of mail in the specified file
-- MAILPATH: A colon-separated list of file names which the shell periodically checks for new mail.
-- OPTARG: The value of the last option argument processed by the getopts built-in.
-- OPTIND: The index of the last option argument processed by the getopts built-in.
-- PATH: A colon-separated list of directories in which the shell looks for commands.
-- PS1: The primary prompt string. The default value is “‘\s-\v\$ ‘".
-- PS2: The secondary prompt string. The default value is “‘> ‘".
+Variable name | Definition
+------------- | ----------
+CDPATH | A colon-separated list of directories used as a search path for the `cd` built-in command.
+HOME | The current user’s home directory; the default for the `cd` built-in. The value of this variable is also used by tilde expansion.
+IFS | A list of characters that separates fields; used when the shell splits words as part of a expansion.
+MAIL | If this parameter is set to a file name and the MAILPATH variable is not set, Bash informs the user of the arrival of mail in the specified file
+MAILPATH | A colon-separated list of file names which the shell periodically checks for new mail.
+OPTARG | The value of the last option argument processed by the `getopts` built-in.
+OPTIND | The index of the last option argument processed by the `getopts` built-in.
+PATH | A colon-separated list of directories in which the shell looks for commands.
+PS1 | The primary prompt string. The default value is "'\s-\v\$ '".
+PS2 | The secondary prompt string. The default value is "'> '".
 
 ### Bash reserved variables
-- auto_resume
-- BASH
-- BASH_ENV
-- BASH_VERSION
-- BASH_VERSINFO
-- COLUMNS
-- COMP_CWORD
-- COMP_LINE
-- COMP_POINT
-- COMP_WORDS
-- COMPREPLY
-- DIRSTACK
-- EUID
-- FCEDIT
-- FIGNORE
-- FUNCNAME
-- GLOBIGNORE
-- GROUPS
-- histchars
-- HISTCMD
-- HISTCONTROL
-- HISTFILE
-- HISTFILESIZE
-- HISTIGNORE
-- HISTSIZE
-- HOSTFILE
-- HOSTTYPE
-- IGNOREEOF
-- INPUTRC
-- LANG
-- LC_ALL
-- LC_COLLATE
-- LC_CTYPE
-- LC_MESSAGES
-- LC_NUMERIC
-- LINENO
-- LINES
-- MACHTYPE
-- MAILCHECK
-- OLDPWD
-- OPTERR
-- OSTYPE
-- PIPESTATUS
-- POSIXLY_CORRECT
-- PPID
-- PROMPT_COMMAND
-- PS3
-- PS4
-- PWD
-- RANDOM
-- REPLY
-- SECONDS
-- SHELLOPTS
-- SHLVL
-- TIMEFORMAT
-- TMOUT
-- UID
-Check the Bash man, info or doc pages for extended information. Some variables are read-only, some are set automatically and some lose their meaning when set to a different value than the default.
+- Only list frequently used variables here, others refer to http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html#table_03_02
+- Check the Bash man, info or doc pages for extended information. Some variables are read-only, some are set automatically and some lose their meaning when set to a different value than the default.
+Variable name | Definition
+------------- | ----------
+BASH | The full pathname used to execute the current instance of Bash.
+FUNCNAME | The name of any currently-executing shell function.
+GROUPS | An array variable containing the list of groups of which the current user is a member.
+HISTCMD | The history number, or index in the history list, of the current command.
+HISTFILE | The name of the file to which the command history is saved. The default value is ~/.bash_history.
+HISTSIZE | The maximum number of commands to remember on the history list, default is 500.
+HOSTFILE | Contains the name of a file in the same format as /etc/hosts that should be read when the shell needs to complete a hostname.
+HOSTNAME | The name of the current host.
+LINENO | The line number in the script or shell function currently executing.
+OLDPWD | The previous working directory as set by the `cd` built-in.
+OPTERR | If set to the value 1, Bash displays error messages generated by the `getopts` built-in.
+PPID | The process ID of the shell parent process
+PWD | The current working directory as set by the `cd` built-in command.
+RANDOM | Each time this parameter is referenced, a random integer between 0 and 32767 is generated. Assigning a value to this variable seeds the random number generator.
+SECONDS | This variable expands to the number of seconds since the shell was started.
+SHELLOPTS | A colon-separated list of enabled shell options.
+UID | The numeric, real user ID of the current user.
 
 ### Special parameters
-These parameters may only be referenced; assignment to them is not allowed.
-- $*: Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, it expands to a single word with the value of each parameter separated by the first character of the IFS special variable.
-- $@: Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, each parameter expands to a separate word.
-- $#: Expands to the number of positional parameters in decimal.
-- $?: Expands to the exit status of the most recently executed foreground pipeline.
-- $-: A hyphen expands to the current option flags as specified upon invocation, by the `set` built-in command, or those set by the shell itself.
-- $$: Expands to the process ID of the shell.
-- $1: Expands to the process ID of the most recently executed background command.
-- $0: Expands to the name of the shell or shell script.
-- $_: The underscore variable is set at the shell startup and contains the absolute file name of the shell or script being executed as passed in the argument list. Subsequently, it expands to the last argument to the previous command, after expansion. It is also set to the full pathname of each command executed and placed in the environment exported to that command. When checking mail, this parameter holds the name of the mail file.
+- These parameters may only be referenced; assignment to them is not allowed.
+Character | Definition
+--------- | ----------
+$* | Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, it expands to a single word with the value of each parameter separated by the first character of the IFS special variable.
+$@ | Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, each parameter expands to a separate word.
+$# | Expands to the number of positional parameters in decimal.
+$? | Expands to the exit status of the most recently executed foreground pipeline.
+$- | A hyphen expands to the current option flags as specified upon invocation, by the `set` built-in command, or those set by the shell itself.
+$$ | Expands to the process ID of the shell.
+$! | Expands to the process ID of the most recently executed background command.
+$0 | Expands to the name of the shell or shell script.
+$_ | The underscore variable is set at the shell startup and contains the absolute file name of the shell or script being executed as passed in the argument list. Subsequently, it expands to the last argument to the previous command, after expansion. It is also set to the full pathname of each command executed and placed in the environment exported to that command. When checking mail, this parameter holds the name of the mail file.
+- The positional parameters are the words following the name of a shell script. They are put into the variable $1, $2, $3, and so on.
 
-The positional parameters are the words following the name of a shell script. They are put into the variable $1, $2, $3, and so on.
 
 ## Quoting characters
 - Quoting is used to remove the special meaning of characters or words: quotes can disable special treatment for special characters, they can prevent reserved words from being recognized as such and they can disable parameter expansion.
@@ -231,11 +181,34 @@ expr ? expr : expr |
 - `set -o`
 ### Changing options
 
-### Bash help
-- man bash
-- bash info
 
 # References
 - http://www.tldp.org/LDP/Bash-Beginners-Guide/html/index.html
 - `man bash`
 - `info bash`
+
+## Three types of built-in commands
+- Bourne Shell built-ins: `:, ., break, cd, continue, eval, exec, exit, export, getopts, bash, pwd, readonly, return, set, shift, test, [, times, trap, umask, unset`
+- Bash built-in commands: `alias, bind, builtin, command, declare, echo, enable, help, let, local, logout, printf, read, shopt, type, typeset, ulimit, unalias`
+- Special built-in commands
+
+## Shell building blocks
+- Shell syntax
+- Shell commands
+- Shell functions
+- Shell parameters
+- Shell expansions
+- Redirections
+- Executing commands
+- Shell scripts
+
+## Overview of programming terms
+- Command control: Testing exit status of a command in order to determine whether a portion of the program should be executed.
+- Conditional branch: Logical point in the program when a condition determines what happens next.
+- Logic flow: The overall design of the program. Determines logical sequence of tasks so that the result is successful and controlled.
+- Loop: Part of the program that is performed zero or more times.
+- User input: Information provided by an external source while the program is running, can be stored and recalled when needed.
+
+## Special variables
+- `export PS1="\u@\h -w> "`
+
