@@ -64,8 +64,6 @@ PS1 | The primary prompt string. The default value is "'\s-\v\$ '".
 PS2 | The secondary prompt string. The default value is "'> '".
 
 ### Bash reserved variables
-- Only list frequently used variables here, others refer to http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html#table_03_02
-- Check the Bash man, info or doc pages for extended information. Some variables are read-only, some are set automatically and some lose their meaning when set to a different value than the default.
 Variable name | Definition
 ------------- | ----------
 BASH | The full pathname used to execute the current instance of Bash.
@@ -86,8 +84,10 @@ SECONDS | This variable expands to the number of seconds since the shell was sta
 SHELLOPTS | A colon-separated list of enabled shell options.
 UID | The numeric, real user ID of the current user.
 
+- Only list frequently used variables here, others refer to http://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html#table_03_02
+- Check the Bash man, info or doc pages for extended information. Some variables are read-only, some are set automatically and some lose their meaning when set to a different value than the default.
+
 ### Special parameters
-- These parameters may only be referenced; assignment to them is not allowed.
 Character | Definition
 --------- | ----------
 $* | Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, it expands to a single word with the value of each parameter separated by the first character of the IFS special variable.
@@ -99,7 +99,9 @@ $$ | Expands to the process ID of the shell.
 $! | Expands to the process ID of the most recently executed background command.
 $0 | Expands to the name of the shell or shell script.
 $_ | The underscore variable is set at the shell startup and contains the absolute file name of the shell or script being executed as passed in the argument list. Subsequently, it expands to the last argument to the previous command, after expansion. It is also set to the full pathname of each command executed and placed in the environment exported to that command. When checking mail, this parameter holds the name of the mail file.
+
 - The positional parameters are the words following the name of a shell script. They are put into the variable $1, $2, $3, and so on.
+- These parameters may only be referenced; assignment to them is not allowed.
 
 
 ## Quoting characters
