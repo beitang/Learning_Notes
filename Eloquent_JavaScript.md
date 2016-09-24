@@ -11,3 +11,4 @@
 
 ## Chapter 1: Values, Types, and Operators
 
+## [Eloquent JavaScript](http://eloquentjavascript.net)
