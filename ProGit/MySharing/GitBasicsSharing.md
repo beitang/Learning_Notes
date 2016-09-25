@@ -125,6 +125,7 @@ git commit -m "commit messages"
 
 ## Moving Files
 > Unlike many other VCS systems, Git does not explicitly track file movement. If you rename a file in Git, no metadata is stored in Git that tells it you renamed the file.
+
 ```
 git mv file_from file_to
 
@@ -132,38 +133,36 @@ mv README.md README
 git rm README.md
 git add README
 ```
+
 > Git figures out that it is a rename implicitly.
 
 # Viewing the Commit History
-> git log
-> 
-> git log -p -2: -p which shows the difference introduced in each commit, -2 which limits the output to only the last two entries.
-> 
-> git log --stat
-> 
-> git log --pretty=oneline
-> 
-> git log --pretty=format:"%h - %an, %ar : %s"
-> 
-> git log --pretty=format:"%h %s" --graph
-> 
-> git log --since=2.weeks
-> 
-> git log -Sfunction_name
-> 
-> git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges -- t/
+```
+git log
+git log --since=2.weeks
+git log file_name
+git log --author=gitster
+git log -p -2
+```
+`-p` which shows the difference introduced in each commit, `-2` which limits the output to only the last two entries.
 
 # Undoing Things
 > Be careful, because you can not always undo some of these undos. This is one of the few areas in Git where you may lose some work if you do it wrong.
 > 
-> One of the common undos takes place when you commit too early and possibly forget to add some files, or you mess up your commit message. If you want to try that commit again, you can run commit with --amend option: git commit --amend
+> One of the common undos takes place when you commit too early and possibly forget to add some files, or you mess up your commit message. If you want to try that commit again, you can run commit with `--amend` option: `git commit --amend`
 >
 > This command takes your staging area and uses it for the commit.
 
 ## Unstaging a Staged File
-> git reset HEAD <file>...: if with --hard, dangerous
+`git reset HEAD <file>...`
+if with --hard, dangerous
 
 ## Unmodifying a Modified File
-> git checkout -- <file>...: dangerous
-> 
+`git checkout -- <file>...` dangerous, will lose your local changes
 > Remember, anything that is committed in Git can almost always be recovered. Even commits that were on branches that were deleted or commits that were overwritten with an --amend commit can be recovered. However, anything you lost that was never committed is likely never to be seen again.
+
+# Questions and To Learn
+* If `git commit --amend` to the wrong commit, hwo to deal with it?
+* `git pull` and `git pull --rebase` difference
+* Remote and branch
+* How to fix conflicts?
