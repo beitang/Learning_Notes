@@ -3,7 +3,7 @@
 ## Snapshots, Not Differences
 > Most other systems store information as a list of file-based changes. These systems think of the information they keep as a set of files and the changes made to each file over time.
 >
-![deltas](./Figure_1-4_deltas)
+![deltas](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_1-4_deltas.png "deltas")
 > Figure 1-4. Storing data as changes to a base version of each file.
 >
 > Git thinks of its data more like a set of snapshots of a miniature filesystem. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git does not store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots.
