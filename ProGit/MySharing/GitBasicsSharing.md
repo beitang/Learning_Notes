@@ -100,7 +100,7 @@ man git-<verb>
 > 
 > As you edit files, Git sees them as modified, because you are changed them since your last commit. You stage these modified files and then commit all your staged changes, and the cycle repeats.
 > 
-> ![lifecycle](://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_2-1_lifecycle.png "lifecycle")
+> ![lifecycle](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_2-1_lifecycle.png "lifecycle")
 > 
 > Figure 2-1. The lifecycle of the status of your files.
 
