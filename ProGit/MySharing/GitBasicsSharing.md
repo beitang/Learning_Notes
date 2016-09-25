@@ -3,15 +3,22 @@
 ## Snapshots, Not Differences
 > Most other systems store information as a list of file-based changes. These systems think of the information they keep as a set of files and the changes made to each file over time.
 >
-![deltas](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_1-4_deltas.png "deltas")
+> ![deltas](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_1-4_deltas.png "deltas")
+> 
 > Figure 1-4. Storing data as changes to a base version of each file.
 >
 > Git thinks of its data more like a set of snapshots of a miniature filesystem. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git does not store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots.
 >
+> ![snapshots](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_1-5_snapshots.png "snapshots")
+> 
 > Figure 1-5. Storing data as snapshots of the project over time.
 
 ## Nearly Every Operation Is Local
+> ![centralized](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_1-2_centralized.png "centralized")
+> 
 > Figure 1-2. Centralized version control.
+> 
+> ![distributed](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_1-3_distributed.png "distributed")
 > 
 > Figure 1-3. Distributed version control.
 > 
@@ -61,6 +68,8 @@ git branch
 > 
 > This leads us to the three main sections of a Git project: the Git directory, the working directory, and the staging area.
 > 
+> ![areas](https://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_1-6_areas.png "areas")
+> 
 > Figure 1-6. Working directory, staging area, and Git directory.
 > 
 > The Git directory is where Git stores the metadata and object database for your project. This is the most important part of Git, and it is what is copied when you clone a respository from another computer.
@@ -90,6 +99,8 @@ man git-<verb>
 > Remember that each file in your working directory can be in one of two states: tracked or untracked. Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged. Untracked files are everything else - any files in your working directory that were not in your last snapshot and are not in your staging area. When you first clone a repository, all of your files will be tracked and unmodified because Git just checked them out and you have not edited anything.
 > 
 > As you edit files, Git sees them as modified, because you are changed them since your last commit. You stage these modified files and then commit all your staged changes, and the cycle repeats.
+> 
+> ![lifecycle](://github.com/beitang/Learning_Notes/blob/master/ProGit/MySharing/Figure_2-1_lifecycle.png "lifecycle")
 > 
 > Figure 2-1. The lifecycle of the status of your files.
 
