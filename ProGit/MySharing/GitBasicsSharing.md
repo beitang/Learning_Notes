@@ -60,7 +60,7 @@ git branch
 > 
 > This leads us to the three main sections of a Git project: the Git directory, the working directory, and the staging area.
 > 
-> Figure 1-6
+> Figure 1-6. Working directory, staging area, and Git directory.
 > 
 > The Git directory is where Git stores the metadata and object database for your project. This is the most important part of Git, and it is what is copied when you clone a respository from another computer.
 > 
@@ -78,51 +78,22 @@ git branch
 > 
 > If a particular version of a file is in the Git directory, it is considered committed. If it has been modified and was added to the staging area, it is staged. And if it was changed since it was checked out but has no been staged, it is modified.
 
-# First-Time Git Setup
-> Git comes with a tool called git config that lets you get and set configuration variables that control all aspects of how Git looks and operates. These variables can be stored in three different places:
-> 
-> 1. /etc/gitconfig file: Contains values for every user on the system and all their repositories. If you pass the option --system to git config, it reads and writes from this file specifically.
-> 
-> 2. ~/.gitconfig or ~/.config/git/config file: Specific to your user. You can make Git read and write to this file specifically by passing the --global option.
-> 
-> 3. config file in the Git directory (.git/config) of whatever repository you are currently using: Specific to that single repository.
-> 
-> Each level overrides values in the previous level.
-
-## Your Identity
-> git config --global user.name "John Doe"
-> 
-> git config --global user.email johndoe@example.com
-
-## Your Editor
-> Now that your identity is set up, you can configure the default text editor that will be used when Git needs you to type in a message. If not configured, Git uses your system default editor.
-> 
-> git config --global core.editor emacs
-
-## Checking Your Settings
-> git config --list
-> 
-> You may see keys more than once, because Git reads the same key from different files. In this case, Git uses the last value for each unique key it sees.
-> 
-> git config user.name
-
 # Getting Help
-> git help <verb>
-> 
-> git <verb> --help
-> 
-> man git-<verb>
+```
+git help <verb>
+git <verb> --help
+man git-<verb>
+```
 
 # Recording Changes to the Repository
 > Remember that each file in your working directory can be in one of two states: tracked or untracked. Tracked files are files that were in the last snapshot; they can be unmodified, modified, or staged. Untracked files are everything else - any files in your working directory that were not in your last snapshot and are not in your staging area. When you first clone a repository, all of your files will be tracked and unmodified because Git just checked them out and you have not edited anything.
 > 
 > As you edit files, Git sees them as modified, because you are changed them since your last commit. You stage these modified files and then commit all your staged changes, and the cycle repeats.
 > 
-> Figure 2-1
+> Figure 2-1. The lifecycle of the status of your files.
 
 ## Checking the Status of Your Files
-> git status
-> 
+`git status`
 > The command also tells you which branch you are on and informs you that it has not diverged from the same branch on the server.
 > 
 > Untracked basically means that Git sees a file you did not have in the previous snapshot (commit); Git will not start including it in your commit snapshots until you explicitly tell it to do so. It does this so you do not accidentally begin including generated binary files or other files that you did not mean to include.
