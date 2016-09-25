@@ -99,40 +99,39 @@ man git-<verb>
 > Untracked basically means that Git sees a file you did not have in the previous snapshot (commit); Git will not start including it in your commit snapshots until you explicitly tell it to do so. It does this so you do not accidentally begin including generated binary files or other files that you did not mean to include.
 
 ## Tracking New Files
-> git add README
+`git add README`
 
 ## Staging Modifed Files
-> git add is a multipurpose command - you use it to begin tracking new files, to stage files, and to do other things like marking merge-conflicted files are resolved. It may be helpful to think of it more as "add this content to the next commit" rather than "add this file to the project".
-> 
-> git add CONTRIBUTING.md
-> 
-> It turns out that Git stages a file exactly as it is when you run the git add command.
+> `git add` is a multipurpose command - you use it to begin tracking new files, to stage files, and to do other things like marking merge-conflicted files are resolved. It may be helpful to think of it more as "add this content to the next commit" rather than "add this file to the project".
 
 ## Viewing Your Staged and Unstaged Changes
-> git diff
-> 
-> git diff --staged
+```
+git diff
+git diff --staged
+```
 
 ## Committing Your Changes
-> git commit
-> 
-> git commit -m "commit messages"
+```
+git commit
+git commit -m "commit messages"
+```
 
 ## Skipping the Staging Area
-> git commit -a -m "commit messages"
-> 
-> -a flag includes all changes files. This is convenient, but be careful; sometimes this flag will cause you to include unwanted changes.
+`git commit -a -m "commit messages"`
+> `-a` flag includes all changes files. This is convenient, but be careful; sometimes this flag will cause you to include unwanted changes.
 
 ## Removing Files
-> git rm
+`git rm`
 
 ## Moving Files
 > Unlike many other VCS systems, Git does not explicitly track file movement. If you rename a file in Git, no metadata is stored in Git that tells it you renamed the file.
-> 
-> git mv file_from file_to
-> 
-> mv README.md README; git rm README.md; git add README
-> 
+```
+git mv file_from file_to
+
+mv README.md README
+git rm README.md
+git add README
+```
 > Git figures out that it is a rename implicitly.
 
 # Viewing the Commit History
