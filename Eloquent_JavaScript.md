@@ -74,6 +74,77 @@ console.log("Aardvark" < "Zoroaster")
 > 
 > NaN is supposed to denote the result of a nonsensical computation, and as such, it is not equal to the result of any other nonsensical computations.
 
+#### Logical Operations
+> JavaScript supports three logical operators: and(&&), or(||), and not(!).
+> 
+> The last logical operator I will discuss is not unary, not binary, but ternary, operating on three values.
+> 
+> `console.log(true ? 1 : 2);`
+> 
+> This one is called the conditional operator. The value on the left of the question mark "picks" which of the other two values will come out. When it is true, the middle value is chosen, and when it is false, the value on the right comes out.
+
+### Undefined Values
+> There are two special values, written null and undefined, that are used to denote the absence of a meaningful value. They are themselves values, but they carry no information.
+> 
+> The difference in meaning between undefined and null is an accident of JavaScript design, and it does not matter most of the time.
+
+### Automatic Type Conversion
+> In the introduction, I mentioned that JavaScript goes out of its way to accept almost any program you give it, even programs that do odd things.
+> 
+> When an operator is applied to the wrong type of value, JavaScript will quietly convert that value to the type it wants, using a set of rules that often are not what you want or expect. This is called type coercion.
+> 
+> When you want to test whether a value has a real value instead of null or undefined, you can simply compare it to null with the == (or !=) operator.
+> 
+> But what if you want to test whether something refers to the precise value false? The rules for converting strings and numbers to Boolean values state that 0, NaN, and the empty string ("") count as false, while all the other values count as true. Because of this, expressions like 0 == false and "" == false are also true. For cases like this, where you do not want any automatic type conversions to happen, there are two extra operators: === and !==. The first tests whether a value is precisely equal to the other, and the second tests whether it is not precisely equal. So "" === false is false as expected.
+> 
+> I recommend using the three-character comparsion operators defensively to prevent unexpected type conversions from tripping you up. But when you are certain the types on both sides will be the same, there is no problem with using the shorter operators.
+
+#### Short-Circuiting of Logical Operators
+> The logical operators && and || handle values of different types in a peculiar way. They will convert the value on their left side to Boolean type in order to decide what to do, but depending on the operator and the result of that conversion, they return either the original left-hand value or the right-hand value.
+> 
+> The || operator, for example, will return the value of its left when that can be converted to true and will return the value one its right otherwise. This conversion works as you would expect for Boolean values and should do something analogous for values of other types.
+> 
+> ```
+> console.log(null || "user")
+> // -> user
+> console.log("Karl" || "user")
+> // -> Karl
+> ```
+>
+> This functionality allows the || operator to be used as a way to fall back on a default value. If you give it an expression that might produce an empty value on the left, the value on the right will be used as a replacement in that case.
+> 
+> The && operator works similarly, but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.
+> 
+> Another important property of these two operators is that the expression to their right is evaluated only when necessary. This is called short-circuit evaluation.
+> 
+> The conditional operator works in a similar way. The first expression is always evaluated, but the second or third value, the one that is not picked, it not.
+
+
+## Chapter 2: Program Structure
+### Expressions and Statements
+> A fragment of code that produces a value is called an expression. Every value that is written literally is an expression. An expression between parentheses is also an expression, as is a binary operator applied to two expressions or a unary operator applied to one.
+> 
+> If an expression corresponds to a sentence fragment, a JavaScript statement corresponds to a full sentence in a human language. A program is simply a list of statements.
+> 
+> The simplest kind of statement is an expression with a semicolon after it.
+> 
+> side effects
+> 
+> In some cases, JavaScript allows you to omit the semicolon at the end of a statement. In other cases, it has to be there, or the next line will be treated as part of the same statement. The rules for when it can be safely omitted are somewhat complex and error-prone. In this book, every statement that needs a semicolon will always be terminated by one. I recommend you do the same in your own programs, at least until you’ve learned more about subtleties involved in leaving out semicolons.
+
+### Variables
+> To catch and hold values, JavaScript provides a thing called a variable.
+> 
+> `var caught = 5 * 5;`
+> 
+> And that gives us our second kind of statement. The special word (keyword) var indicates that this sentence is going to define a variable. It is followed by the name of the variable and, if we want to immediately give it a value, by an = operator and an expression.
+> 
+> Variable names can be any word that is not a reserved word. They may not include spaces. Digits can also be part of variable names, but the name must not start with a digit. A variable name cannot include punctuation, except for the characters $ and _.
+> 
+> If you ask for the value of an empty variable, you will get the value undefined.
+> 
+> A single var statement may define multiple variables. The definitions must be separated by commas.
+
 
 
 ## [Eloquent JavaScript](http://eloquentjavascript.net)
